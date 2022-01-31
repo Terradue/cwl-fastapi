@@ -1,0 +1,8 @@
+{
+  "runners": [
+    {
+      "name": "docker-local",
+      "module": "app.extensions.docker_local"
+    }
+  ]
+}
