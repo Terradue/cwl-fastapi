@@ -21,13 +21,13 @@ import json
 
 class Dict(dict):
     """dot.notation access to dictionary attributes"""
+
     __getattr__ = dict.get
     __setattr__ = dict.__setitem__
     __delattr__ = dict.__delitem__
 
 
 class Configuration(object):
-
     @staticmethod
     def __load__(data):
         if type(data) is dict:
@@ -47,7 +47,7 @@ class Configuration(object):
         with open(path, "r") as f:
             result = Configuration.__load__(json.loads(f.read()))
         return result
-    
+
     @staticmethod
     def load():
         confjson = Configuration.load_json(os.environ["CONFIG_PATH"])

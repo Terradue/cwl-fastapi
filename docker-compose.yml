@@ -1,7 +1,7 @@
 version: "3.9"
 services:
-  fnano:
-    container_name: fnano
+  cwl-fastapi:
+    container_name: cwl-fastapi
     restart: unless-stopped
     env_file:
       - .env
@@ -9,7 +9,7 @@ services:
       context: ./
       dockerfile: Dockerfile
       labels:
-        - fnano
+        - cwl
     volumes:
         - .:/code
     command:
@@ -29,7 +29,6 @@ services:
     env_file:
       - .env
     ports:
-      - "$PORT:$PORT"
       - "80:80"
       - "443:443"
     volumes:
@@ -38,7 +37,7 @@ services:
       - caddy_config:/config
 
     depends_on:
-      - fnano
+      - cwl-fastapi
 
 volumes:
   caddy_data:

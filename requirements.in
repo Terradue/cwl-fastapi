@@ -16,3 +16,5 @@ python-dotenv
 python-multipart
 uvicorn
 gunicorn
+cwltool
+redis

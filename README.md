@@ -160,7 +160,7 @@ If you want to run the application locally, without using Docker, then:
 This shows the folder structure of the default template.
 
 ```
-fastapi-nano
+cwl-fastapi
 ├── app                                 # primary application folder
 │   ├── apis                            # this houses all the API packages
 │   │   ├── api_a                       # api_a package

@@ -2,23 +2,33 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends
 
-from app.apis.runners.mainmod import get_runners
-from app.apis.api_b.mainmod import main_func as main_func_b
+from app.apis.controllers.runners import get_runner_by_name, get_runners
 from app.core.auth import get_current_user
+from app.types.runners import RunnerDefinition
 
 router = APIRouter()
 
 
-@router.get("/runners", tags=["runners"])
+@router.get("/runners", tags=["runners"], response_model=list[RunnerDefinition])
 async def runners(
     # auth: Depends = Depends(get_current_user),
-) -> dict[str, int]:
+) -> list[RunnerDefinition]:
+    """Get the available runners of this instance"""
     return get_runners()
 
 
-@router.get("/api_b/{num}", tags=["api_b"])
-async def view_b(
+@router.get("/runners/{name}", tags=["runners"], response_model=RunnerDefinition)
+async def runner_by_name(
+    name: str,
+    # auth: Depends = Depends(get_current_user),
+) -> RunnerDefinition:
+    """Get the detail of a specific runner"""
+    return get_runner_by_name(name)
+
+
+@router.get("/workflows", tags=["workflows"])
+async def jobs(
     num: int,
     auth: Depends = Depends(get_current_user),
 ) -> dict[str, int]:
-    return main_func_b(num)
+    return get_workflows(num)

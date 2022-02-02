@@ -6,46 +6,127 @@
 #
 anyio==3.3.2
     # via starlette
+argcomplete==2.0.0
+    # via cwltool
 asgiref==3.4.1
     # via uvicorn
+bagit==1.8.1
+    # via cwltool
 bcrypt==3.2.0
     # via -r requirements.in
+cachecontrol==0.12.10
+    # via schema-salad
+certifi==2021.10.8
+    # via requests
 cffi==1.14.6
     # via bcrypt
+charset-normalizer==2.0.11
+    # via requests
 click==8.0.1
     # via uvicorn
+coloredlogs==15.0.1
+    # via cwltool
+cwltool==3.1.20220124184855
+    # via -r requirements.in
+deprecated==1.2.13
+    # via redis
 fastapi==0.70.1
     # via -r requirements.in
 gunicorn==20.1.0
     # via -r requirements.in
 h11==0.12.0
     # via uvicorn
+humanfriendly==10.0
+    # via coloredlogs
 idna==3.2
-    # via anyio
+    # via
+    #   anyio
+    #   requests
+isodate==0.6.1
+    # via rdflib
+lockfile==0.12.2
+    # via schema-salad
+lxml==4.7.1
+    # via prov
+mistune==0.8.4
+    # via schema-salad
+msgpack==1.0.3
+    # via cachecontrol
+mypy-extensions==0.4.3
+    # via cwltool
+networkx==2.6.3
+    # via prov
+packaging==21.3
+    # via redis
 passlib==1.7.4
     # via -r requirements.in
+prov==1.5.1
+    # via cwltool
+psutil==5.9.0
+    # via cwltool
 pycparser==2.20
     # via cffi
 pydantic==1.8.2
     # via fastapi
+pydot==1.4.2
+    # via cwltool
 pyjwt==2.3.0
     # via -r requirements.in
+pyparsing==3.0.7
+    # via
+    #   cwltool
+    #   packaging
+    #   pydot
+    #   rdflib
+python-dateutil==2.8.2
+    # via prov
 python-dotenv==0.19.2
     # via -r requirements.in
 python-multipart==0.0.5
     # via -r requirements.in
+rdflib==6.1.1
+    # via
+    #   cwltool
+    #   prov
+    #   schema-salad
+redis==4.1.2
+    # via -r requirements.in
+requests==2.27.1
+    # via
+    #   cachecontrol
+    #   cwltool
+    #   schema-salad
+ruamel.yaml==0.17.20
+    # via
+    #   cwltool
+    #   schema-salad
+ruamel.yaml.clib==0.2.6
+    # via ruamel.yaml
+schema-salad==8.2.20220103095339
+    # via cwltool
+shellescape==3.8.1
+    # via cwltool
 six==1.16.0
     # via
     #   bcrypt
+    #   isodate
+    #   prov
+    #   python-dateutil
     #   python-multipart
 sniffio==1.2.0
     # via anyio
 starlette==0.16.0
     # via fastapi
 typing-extensions==3.10.0.2
-    # via pydantic
+    # via
+    #   cwltool
+    #   pydantic
+urllib3==1.26.8
+    # via requests
 uvicorn==0.16.0
     # via -r requirements.in
+wrapt==1.13.3
+    # via deprecated
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
