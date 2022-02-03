@@ -1,54 +1,64 @@
-import os
-
-from dotenv import load_dotenv
-
-load_dotenv("./.env")
-
-
-API_USERNAME = os.environ["API_USERNAME"]
-API_PASSWORD = os.environ["API_PASSWORD"]
-
-# Auth configs.
-API_SECRET_KEY = os.environ["API_SECRET_KEY"]
-API_ALGORITHM = os.environ["API_ALGORITHM"]
-API_ACCESS_TOKEN_EXPIRE_MINUTES = int(
-    os.environ["API_ACCESS_TOKEN_EXPIRE_MINUTES"]
-)  # infinity
-
-
 import json
+import os
+from pathlib import Path
+from typing import Any, Dict, Tuple
+from app.types.runners import RunnerDefinition
+from pydantic import (
+    BaseModel,
+    BaseSettings,
+    PyObject,
+    RedisDsn,
+    Field,
+)
+from pydantic.env_settings import SettingsSourceCallable
+
+def json_config_settings_source(settings: BaseSettings) -> Dict[str, Any]:
+    """
+    A simple settings source that loads variables from a JSON file
+    at the project's root.
+
+    Here we happen to choose to use the `env_file_encoding` from Config
+    when reading `config.json`
+    """
+    encoding = settings.__config__.env_file_encoding
+    return json.loads(Path(os.getenv("CWL_FASTAPI_CONFIG_PATH", 'config.json')).read_text(encoding))
+
+class RedisConfig(BaseModel):
+     dsn: RedisDsn = 'redis://user:pass@localhost:6379/1'
+     prefix: str = 'cwlfastapi'
+
+class Settings(BaseSettings):
+    app_name: str = "CWL FastAPI"
+
+    redis: RedisConfig = RedisConfig()
+    
+    runners: list[RunnerDefinition] = list[RunnerDefinition]()
+
+    class Config: 
+        env_file = ".env"
+        env_prefix = "CWL_FASTAPI_"
+        env_nested_delimiter = '__'
+        
+        fields = {
+            'redis.dsn': {
+                'env': ['service_redis_dsn', 'redis_url']
+            }
+        }
+        
+        @classmethod
+        def customise_sources(
+            cls,
+            init_settings,
+            env_settings,
+            file_secret_settings,
+        ):
+            return (
+                init_settings,
+                env_settings,
+                file_secret_settings,
+                json_config_settings_source,
+            )
+
+settings = Settings()
 
 
-class Dict(dict):
-    """dot.notation access to dictionary attributes"""
-
-    __getattr__ = dict.get
-    __setattr__ = dict.__setitem__
-    __delattr__ = dict.__delitem__
-
-
-class Configuration(object):
-    @staticmethod
-    def __load__(data):
-        if type(data) is dict:
-            return Configuration.load_dict(data)
-        else:
-            return data
-
-    @staticmethod
-    def load_dict(data: dict):
-        result = Dict()
-        for key, value in data.items():
-            result[key] = Configuration.__load__(value)
-        return result
-
-    @staticmethod
-    def load_json(path: str):
-        with open(path, "r") as f:
-            result = Configuration.__load__(json.loads(f.read()))
-        return result
-
-    @staticmethod
-    def load():
-        confjson = Configuration.load_json(os.environ["CONFIG_PATH"])
-        return confjson

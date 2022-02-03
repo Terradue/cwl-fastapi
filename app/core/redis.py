@@ -1,6 +1,6 @@
 import datetime
 
-DEFAULT_KEY_PREFIX = "cwl-fastapi-test"
+DEFAULT_KEY_PREFIX = "cwlfastapi-test"
 
 
 def prefixed_key(f):

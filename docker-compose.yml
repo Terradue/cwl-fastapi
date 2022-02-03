@@ -18,9 +18,19 @@ services:
       - |
         gunicorn app.main:app --workers 2 \
         --worker-class uvicorn.workers.UvicornWorker -b 0.0.0.0:6969
-
+    depends_on:
+      - redis
     ports:
       - 6969:6969
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - 6379:6379
 
   caddy:
     image: caddy:2-alpine

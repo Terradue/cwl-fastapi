@@ -10,9 +10,7 @@ from cwltool.context import LoadingContext, RuntimeContext
 from cwltool.executors import JobExecutor
 from cwltool.main import main as cwlmain
 from pydantic import BaseModel
-
-from app.core.config import Configuration
-
+from app.core import config
 
 class RunnerDefinition(BaseModel):
     name: str
@@ -27,8 +25,7 @@ class RunnerFactory:
     """
 
     def get_runners(self) -> list[RunnerDefinition]:
-        cfg = Configuration.load()
-        return [RunnerDefinition.parse_obj(r) for r in cfg.runners]
+        return [RunnerDefinition.parse_obj(r) for r in config.settings.runners]
 
     def get_runner_by_name(self, name: str) -> RunnerDefinition:
         return next(r for r in self.get_runners() if r.name == name)
