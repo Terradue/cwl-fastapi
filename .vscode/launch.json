@@ -16,7 +16,8 @@
             "env": {
                 "CWL_FASTAPI_CONFIG_PATH": "${workspaceFolder}/conf/config-debug.json",
             },
-            "jinja": true
+            "jinja": true,
+            "justMyCode": false
         }
     ]
 }

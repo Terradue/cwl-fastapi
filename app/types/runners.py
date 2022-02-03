@@ -10,7 +10,9 @@ from cwltool.context import LoadingContext, RuntimeContext
 from cwltool.executors import JobExecutor
 from cwltool.main import main as cwlmain
 from pydantic import BaseModel
+
 from app.core import config
+
 
 class RunnerDefinition(BaseModel):
     name: str
