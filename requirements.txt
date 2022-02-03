@@ -30,7 +30,7 @@ cwltool==3.1.20220124184855
     # via -r requirements.in
 deprecated==1.2.13
     # via redis
-fastapi==0.70.1
+fastapi==0.73.0
     # via -r requirements.in
 gunicorn==20.1.0
     # via -r requirements.in
@@ -115,7 +115,7 @@ six==1.16.0
     #   python-multipart
 sniffio==1.2.0
     # via anyio
-starlette==0.16.0
+starlette==0.17.1
     # via fastapi
 typing-extensions==3.10.0.2
     # via
