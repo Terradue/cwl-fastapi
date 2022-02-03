@@ -123,7 +123,7 @@ typing-extensions==3.10.0.2
     #   pydantic
 urllib3==1.26.8
     # via requests
-uvicorn==0.16.0
+uvicorn==0.17.1
     # via -r requirements.in
 wrapt==1.13.3
     # via deprecated
