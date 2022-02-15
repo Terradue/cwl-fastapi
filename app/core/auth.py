@@ -45,14 +45,6 @@ def get_password_hash(password: str) -> str:
     return pwd_context.hash(password)
 
 
-# fake_users_db = {
-#     "ubuntu": {
-#         "username": config.API_USERNAME,
-#         "hashed_password": get_password_hash(config.API_PASSWORD),
-#     }
-# }
-
-
 def get_user(
     db: dict[str, dict[str, str]],
     username: Optional[str],

@@ -2,6 +2,7 @@ import json
 import os
 from pathlib import Path
 from typing import Any, Dict
+from app.core import config
 
 from pydantic import BaseModel, BaseSettings, RedisDsn
 
@@ -33,7 +34,7 @@ class Settings(BaseSettings):
     redis: RedisConfig = RedisConfig()
 
     runners: list[RunnerDefinition] = list[RunnerDefinition]()
-
+    
     class Config:
         env_file = ".env"
         env_prefix = "CWL_FASTAPI_"

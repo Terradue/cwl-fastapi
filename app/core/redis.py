@@ -36,28 +36,19 @@ class KeySchema:
         return f"sites:info:{site_id}"
 
     @prefixed_key
-    def site_ids_key(self) -> str:
+    def workflows_key(self) -> str:
         """
-        sites:ids
-        Redis type: set
-        """
-        return "sites:ids"
-
-    @prefixed_key
-    def site_geo_key(self) -> str:
-        """
-        sites:geo
-        Redis type: geo
-        """
-        return "sites:geo"
-
-    @prefixed_key
-    def site_stats_key(self, site_id: int, day: datetime.datetime) -> str:
-        """
-        sites:stats:[year-month-day]:[site_id]
         Redis type: sorted set
         """
-        return f"sites:stats:{day.strftime('%Y-%m-%d')}:{site_id}"
+        return f"workflows"
+    
+    @prefixed_key
+    def workflow_key(self, workflow_id: int) -> str:
+        """
+        workflows:[wf_id]
+        Redis type: json
+        """
+        return f"workflows:{workflow_id}"
 
     @prefixed_key
     def capacity_ranking_key(self):

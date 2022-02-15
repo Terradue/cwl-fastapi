@@ -1,10 +1,7 @@
 import abc
-import argparse
 import importlib
-import sys
-from typing import IO, Any, Callable, List, Optional, Union
+from typing import IO, Any
 
-import cwltool
 from cwltool.argparser import arg_parser
 from cwltool.context import LoadingContext, RuntimeContext
 from cwltool.executors import JobExecutor
