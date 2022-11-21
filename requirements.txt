@@ -8,8 +8,6 @@ anyio==3.3.2
     # via starlette
 argcomplete==2.0.0
     # via cwltool
-asgiref==3.4.1
-    # via uvicorn
 bagit==1.8.1
     # via cwltool
 bcrypt==3.2.0
@@ -84,8 +82,6 @@ python-dotenv==0.19.2
     # via -r requirements.in
 python-multipart==0.0.5
     # via -r requirements.in
-pyyaml==6.0
-    # via -r requirements.in
 rdflib==6.1.1
     # via
     #   cwltool
@@ -98,12 +94,10 @@ requests==2.27.1
     #   cachecontrol
     #   cwltool
     #   schema-salad
-ruamel.yaml==0.17.20
+ruamel-yaml==0.17.20
     # via
     #   cwltool
     #   schema-salad
-ruamel.yaml.clib==0.2.6
-    # via ruamel.yaml
 schema-salad==8.2.20220103095339
     # via cwltool
 shellescape==3.8.1
@@ -125,7 +119,7 @@ typing-extensions==3.10.0.2
     #   pydantic
 urllib3==1.26.8
     # via requests
-uvicorn==0.16.0
+uvicorn==0.20.0
     # via -r requirements.in
 wrapt==1.13.3
     # via deprecated
