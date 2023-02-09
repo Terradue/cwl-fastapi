@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=requirements.txt requirements.in
 #
-anyio==3.3.2
+anyio==3.6.2
     # via starlette
 argcomplete==2.0.0
     # via cwltool
@@ -30,7 +30,7 @@ cwltool==3.1.20220124184855
     # via -r requirements.in
 deprecated==1.2.13
     # via redis
-fastapi==0.70.1
+fastapi==0.90.0
     # via -r requirements.in
 gunicorn==20.1.0
     # via -r requirements.in
@@ -84,8 +84,6 @@ python-dotenv==0.19.2
     # via -r requirements.in
 python-multipart==0.0.5
     # via -r requirements.in
-pyyaml==6.0
-    # via -r requirements.in
 rdflib==6.1.1
     # via
     #   cwltool
@@ -98,12 +96,10 @@ requests==2.27.1
     #   cachecontrol
     #   cwltool
     #   schema-salad
-ruamel.yaml==0.17.20
+ruamel-yaml==0.17.20
     # via
     #   cwltool
     #   schema-salad
-ruamel.yaml.clib==0.2.6
-    # via ruamel.yaml
 schema-salad==8.2.20220103095339
     # via cwltool
 shellescape==3.8.1
@@ -117,7 +113,7 @@ six==1.16.0
     #   python-multipart
 sniffio==1.2.0
     # via anyio
-starlette==0.16.0
+starlette==0.23.0
     # via fastapi
 typing-extensions==3.10.0.2
     # via
